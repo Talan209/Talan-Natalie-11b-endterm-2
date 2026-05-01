@@ -73,19 +73,19 @@
             category = "Gầy";
             bodyImage.src = "images/Gaygo.png";
 
-            buttonHTML = `<button onclick="showAdvice('gain')"->Xem cách tăng cân</button>`;
+            buttonHTML = `<button onclick="showAdvice('gain')">Xem cách tăng cân</button>`;
 
         } else if (bmi < 24.9) {
             category = "Bình thường";
             bodyImage.src = "images/on.png";
 
-            buttonHTML = `<button onclick="showAdvice('normal')"-> Xem lời khuyên</button>`;
+            buttonHTML = `<button onclick="showAdvice('normal')"> Xem lời khuyên</button>`;
 
         } else {
             category = "Thừa cân / béo";
             bodyImage.src = "images/map.webp";
 
-            buttonHTML = `<button onclick="showAdvice('lose')"-> Xem cách giảm cân</button>`;
+            buttonHTML = `<button onclick="showAdvice('lose')"> Xem cách giảm cân</button>`;
         }
 
         const resultDiv = document.getElementById('result');
