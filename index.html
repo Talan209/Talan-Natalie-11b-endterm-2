@@ -66,17 +66,18 @@
             if (bmi < 18.5) {
                 category = "Gầy";
                 advice = "Cần bổ sung protein, chia nhỏ bữa ăn và tập các bài tập tăng cơ.";
-                bodyImage.src = "images/gaygo";
+                bodyImage.src = "images/Gaygo.png";
             buttonHTML = `<button onclick="showAdvice('gain')">→ Cách tăng cân vừa phải</button>`;
             } else if (bmi < 24.9) {
                 category = "Bình thường";
                 advice = "Duy trì chế độ ăn hiện tại, tập thể dục 30 phút mỗi ngày.";
+                  bodyImage.src = "images/on.png";
+            adviceSection.style.display = "block";
             } else if (bmi < 29.9) {
                 category = "Tiền béo phì";
-                advice = "Giảm tinh bột, tăng chất xơ và tập cardio cường độ vừa.";
-            } else {
-                category = "Béo phì";
-                advice = "Hạn chế đồ dầu mỡ, tập luyện nghiêm túc và nghỉ ngơi đủ giấc.";
+                advice = "Giảm tinh bột, hạn chế dầu mỡ, tăng chất xơ, tập cardio cường độ vừa và ngủ đủ giấc.";
+                  bodyImage.src = "images/map.webp";
+            buttonHTML = `<button onclick="showAdvice('lose')">→ Cách giảm cân</button>`;
             }
 
             const resultDiv = document.getElementById('result');
@@ -96,6 +97,30 @@
             alert("Vui lòng nhập đầy đủ thông tin chiều cao và cân nặng!");
         }
     }
+    function showAdvice(type) {
+    const adviceSection = document.getElementById('adviceSection');
+    const adviceText = document.getElementById('adviceText');
+
+    adviceSection.style.display = "block";
+
+    if (type === "gain") {
+        adviceText.innerHTML = `
+            <b>Cách tăng cân:</b><br>
+            - Ăn nhiều bữa/ngày<br>
+            - Bổ sung protein<br>
+            - Tập gym tăng cơ
+        `;
+    } else {
+        adviceText.innerHTML = `
+            <b>Cách giảm cân:</b><br>
+            - Giảm đồ ngọt, dầu mỡ<br>
+            - Tập cardio<br>
+            - Uống nhiều nước
+        `;
+    }
+
+    adviceSection.scrollIntoView({ behavior: "smooth" });
+}
 </script>
 
 </body>
