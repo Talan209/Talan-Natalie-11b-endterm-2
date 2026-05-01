@@ -65,17 +65,15 @@
 
             if (bmi < 18.5) {
                 category = "Gầy";
-                advice = "Cần bổ sung protein, chia nhỏ bữa ăn và tập các bài tập tăng cơ.";
                 bodyImage.src = "images/Gaygo.png";
             buttonHTML = `<button onclick="showAdvice('gain')">→ Cách tăng cân vừa phải</button>`;
             } else if (bmi < 24.9) {
                 category = "Bình thường";
-                advice = "Duy trì chế độ ăn hiện tại, tập thể dục 30 phút mỗi ngày.";
                   bodyImage.src = "images/on.png";
             adviceSection.style.display = "block";
+                adviceText.innerHTML = "Cơ thể bạn đã đều đặn 👍 Hãy duy trì chế độ ăn và sinh hoạt hợp lý.";
             } else if (bmi < 29.9) {
                 category = "Tiền béo phì";
-                advice = "Giảm tinh bột, hạn chế dầu mỡ, tăng chất xơ, tập cardio cường độ vừa và ngủ đủ giấc.";
                   bodyImage.src = "images/map.webp";
             buttonHTML = `<button onclick="showAdvice('lose')">→ Cách giảm cân</button>`;
             }
