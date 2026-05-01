@@ -1,1 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tra cứu BMI & Chế độ sức khỏe</title>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<div class="container">
+    <h2>Tính Chỉ Số BMI</h2>
+    
+    <label for="name">Họ tên:</label>
+    <input type="text" id="name" placeholder="Nhập tên của bạn">
+
+    <label for="age">Tuổi:</label>
+    <input type="number" id="age" placeholder="Nhập số tuổi">
+
+    <label for="gender">Giới tính:</label>
+    <select id="gender">
+        <option value="Nam">Nam</option>
+        <option value="Nữ">Nữ</option>
+    </select>
+
+    <label for="height">Chiều cao (cm):</label>
+    <input type="number" id="height" placeholder="Ví dụ: 170">
+
+    <label for="weight">Cân nặng (kg):</label>
+    <input type="number" id="weight" placeholder="Ví dụ: 65">
+
+    <button onclick="calculateBMI()">Tính BMI</button>
+
+    <div id="result"></div>
+
+    <div class="history">
+        <h3>Lịch sử tra cứu</h3>
+        <ul id="historyList"></ul>
+    </div>
+</div>
+
+<script>
+    function calculateBMI() {
+        const name = document.getElementById('name').value;
+        const age = document.getElementById('age').value;
+        const gender = document.getElementById('gender').value;
+        const h = document.getElementById('height').value / 100;
+        const w = document.getElementById('weight').value;
+
+        if (h > 0 && w > 0) {
+            const bmi = (w / (h * h)).toFixed(1);
+            let category = "";
+            let advice = "";
+
+            if (bmi < 18.5) {
+                category = "Gầy";
+                advice = "Cần bổ sung protein, chia nhỏ bữa ăn và tập các bài tập tăng cơ.";
+            } else if (bmi < 24.9) {
+                category = "Bình thường";
+                advice = "Duy trì chế độ ăn hiện tại, tập thể dục 30 phút mỗi ngày.";
+            } else if (bmi < 29.9) {
+                category = "Tiền béo phì";
+                advice = "Giảm tinh bột, tăng chất xơ và tập cardio cường độ vừa.";
+            } else {
+                category = "Béo phì";
+                advice = "Hạn chế đồ dầu mỡ, tập luyện nghiêm túc và nghỉ ngơi đủ giấc.";
+            }
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = "block";
+            resultDiv.style.backgroundColor = bmi < 24.9 ? "#d8f3dc" : "#ffd6d6";
+            resultDiv.innerHTML = `
+                <strong>Kết quả của ${name} (${age} tuổi, ${gender}):</strong><br>
+                BMI: ${bmi} - Phân loại: ${category}<br><br>
+                <strong>Gợi ý cho bạn:</strong> ${advice}
+            `;
+
+            const historyList = document.getElementById('historyList');
+            const li = document.createElement('li');
+            li.textContent = `${name}: BMI ${bmi} (${new Date().toLocaleDateString()})`;
+            historyList.prepend(li);
+        } else {
+            alert("Vui lòng nhập đầy đủ thông tin chiều cao và cân nặng!");
+        }
+    }
+</script>
+
+</body>
+</html>
