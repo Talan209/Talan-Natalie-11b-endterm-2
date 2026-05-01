@@ -33,13 +33,23 @@
     <button onclick="calculateBMI()">Tính BMI</button>
 
     <div id="result"></div>
-
+         
     <div class="history">
         <h3>Lịch sử tra cứu</h3>
         <ul id="historyList"></ul>
     </div>
-</div>
 
+
+     <div id="adviceSection" style="display:none; margin-top:20px;">
+        <h3>Giải pháp cho bạn</h3>
+
+          <img id="bodyImage" src="" style="width:100%; border-radius:10px;">
+
+        <p id="adviceText"></p>
+    </div>
+         
+</div>  
+    
 <script>
     function calculateBMI() {
         const name = document.getElementById('name').value;
