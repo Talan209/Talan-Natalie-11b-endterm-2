@@ -51,49 +51,61 @@
     
 <script>
     function calculateBMI() {
-        const name = document.getElementById('name').value;
-        const age = document.getElementById('age').value;
-        const gender = document.getElementById('gender').value;
-        const h = document.getElementById('height').value / 100;
-        const w = document.getElementById('weight').value;
+    const name = document.getElementById('name').value;
+    const age = document.getElementById('age').value;
+    const gender = document.getElementById('gender').value;
+    const h = document.getElementById('height').value / 100;
+    const w = document.getElementById('weight').value;
 
-        if (h > 0 && w > 0) {
-            const bmi = (w / (h * h)).toFixed(1);
-            let category = "";
-            let advice = "";
+    const bodyImage = document.getElementById('bodyImage');
+    const adviceSection = document.getElementById('adviceSection');
+    const adviceText = document.getElementById('adviceText');
 
-            if (bmi < 18.5) {
-               const category = "Gầy";
-              const bodyImage.src = "images/Gaygo.png";
-          let buttonHTML = `<button onclick="showAdvice('gain')">→ Cách tăng cân vừa phải</button>`;
-            } else if (bmi < 24.9) {
-               const category = "Bình thường";
-                 const bodyImage.src = "images/on.png";
-           const adviceSection.style.display = "block";
-               const adviceText.innerHTML = "Cơ thể bạn đã đều đặn 👍 Hãy duy trì chế độ ăn và sinh hoạt hợp lý.";
-            } else if (bmi < 29.9) {
-               const category = "Tiền béo phì";
-                 const bodyImage.src = "images/map.webp";
-           let buttonHTML = `<button onclick="showAdvice('lose')">→ Cách giảm cân</button>`;
-            }
+    let buttonHTML = "";
+    let category = "";
 
-            const resultDiv = document.getElementById('result');
-            resultDiv.style.display = "block";
-            resultDiv.style.backgroundColor = bmi < 24.9 ? "#d8f3dc" : "#ffd6d6";
-            resultDiv.innerHTML = `
-                <strong>Kết quả của ${name} (${age} tuổi, ${gender}):</strong><br>
-                BMI: ${bmi} - Phân loại: ${category}<br><br>
-                ${buttonHTML}
-            `;
+    if (h > 0 && w > 0) {
+        const bmi = (w / (h * h)).toFixed(1);
 
-            const historyList = document.getElementById('historyList');
-            const li = document.createElement('li');
-            li.textContent = `${name}: BMI ${bmi} (${new Date().toLocaleDateString()})`;
-            historyList.prepend(li);
+        adviceSection.style.display = "none";
+
+        if (bmi < 18.5) {
+            category = "Gầy";
+            bodyImage.src = "images/Gaygo.png";
+
+            buttonHTML = `<button onclick="showAdvice('gain')"->Xem cách tăng cân</button>`;
+
+        } else if (bmi < 24.9) {
+            category = "Bình thường";
+            bodyImage.src = "images/on.png";
+
+            buttonHTML = `<button onclick="showAdvice('normal')"-> Xem lời khuyên</button>`;
+
         } else {
-            alert("Vui lòng nhập đầy đủ thông tin chiều cao và cân nặng!");
+            category = "Thừa cân / béo";
+            bodyImage.src = "images/map.webp";
+
+            buttonHTML = `<button onclick="showAdvice('lose')"-> Xem cách giảm cân</button>`;
         }
+
+        const resultDiv = document.getElementById('result');
+        resultDiv.style.display = "block";
+        resultDiv.style.backgroundColor = bmi < 24.9 ? "#d8f3dc" : "#ffd6d6";
+
+        resultDiv.innerHTML = `
+            <strong>Kết quả của ${name} (${age} tuổi, ${gender}):</strong><br>
+            BMI: ${bmi} - ${category}<br><br>
+            ${buttonHTML}
+        `;
+        const historyList = document.getElementById('historyList');
+        const li = document.createElement('li');
+        li.textContent = `${name}: BMI ${bmi} (${new Date().toLocaleDateString()})`;
+        historyList.prepend(li);
+
+    } else {
+        alert("Nhập đủ chiều cao và cân nặng!");
     }
+}
    function showAdvice(type) {
     const adviceSection = document.getElementById('adviceSection');
     const adviceText = document.getElementById('adviceText');
@@ -107,12 +119,19 @@
             - Bổ sung protein<br>
             - Tập gym tăng cơ
         `;
-    } else {
+    } else if (type === "lose") {
         adviceText.innerHTML = `
             <b>Cách giảm cân:</b><br>
             - Giảm đồ ngọt, dầu mỡ<br>
             - Tập cardio<br>
             - Uống nhiều nước
+        `;
+    } else {
+        adviceText.innerHTML = `
+            <b>Bạn đang ở trạng thái tốt 👍</b><br>
+            - Duy trì ăn uống hợp lý<br>
+            - Uống đủ nước<br>
+            - Tập thể dục đều đặn
         `;
     }
 
