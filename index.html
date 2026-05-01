@@ -42,10 +42,9 @@
 
      <div id="adviceSection" style="display:none; margin-top:20px;">
         <h3>Giải pháp cho bạn</h3>
+ <p id="adviceText"></p>
+          <img id="bodyImage" src="" style="width:80%; border-radius:8px;">
 
-          <img id="bodyImage" src="" style="width:100%; border-radius:10px;">
-
-        <p id="adviceText"></p>
     </div>
          
 </div>  
@@ -64,18 +63,18 @@
             let advice = "";
 
             if (bmi < 18.5) {
-                category = "Gầy";
-                bodyImage.src = "images/Gaygo.png";
-            buttonHTML = `<button onclick="showAdvice('gain')">→ Cách tăng cân vừa phải</button>`;
+               const category = "Gầy";
+              const bodyImage.src = "images/Gaygo.png";
+          let buttonHTML = `<button onclick="showAdvice('gain')">→ Cách tăng cân vừa phải</button>`;
             } else if (bmi < 24.9) {
-                category = "Bình thường";
-                  bodyImage.src = "images/on.png";
-            adviceSection.style.display = "block";
-                adviceText.innerHTML = "Cơ thể bạn đã đều đặn 👍 Hãy duy trì chế độ ăn và sinh hoạt hợp lý.";
+               const category = "Bình thường";
+                 const bodyImage.src = "images/on.png";
+           const adviceSection.style.display = "block";
+               const adviceText.innerHTML = "Cơ thể bạn đã đều đặn 👍 Hãy duy trì chế độ ăn và sinh hoạt hợp lý.";
             } else if (bmi < 29.9) {
-                category = "Tiền béo phì";
-                  bodyImage.src = "images/map.webp";
-            buttonHTML = `<button onclick="showAdvice('lose')">→ Cách giảm cân</button>`;
+               const category = "Tiền béo phì";
+                 const bodyImage.src = "images/map.webp";
+           let buttonHTML = `<button onclick="showAdvice('lose')">→ Cách giảm cân</button>`;
             }
 
             const resultDiv = document.getElementById('result');
@@ -84,7 +83,7 @@
             resultDiv.innerHTML = `
                 <strong>Kết quả của ${name} (${age} tuổi, ${gender}):</strong><br>
                 BMI: ${bmi} - Phân loại: ${category}<br><br>
-                <strong>Gợi ý cho bạn:</strong> ${advice}
+                ${buttonHTML}
             `;
 
             const historyList = document.getElementById('historyList');
