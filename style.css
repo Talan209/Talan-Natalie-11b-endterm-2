@@ -61,3 +61,13 @@ button:hover {
     font-size: 14px; 
     color: #555; 
 }
+#adviceSection {
+    background: #f1f8f6;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+#adviceSection button {
+    margin-top: 10px;
+}
