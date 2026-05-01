@@ -66,6 +66,8 @@
             if (bmi < 18.5) {
                 category = "Gầy";
                 advice = "Cần bổ sung protein, chia nhỏ bữa ăn và tập các bài tập tăng cơ.";
+                bodyImage.src = "images/gaygo";
+            buttonHTML = `<button onclick="showAdvice('gain')">→ Cách tăng cân vừa phải</button>`;
             } else if (bmi < 24.9) {
                 category = "Bình thường";
                 advice = "Duy trì chế độ ăn hiện tại, tập thể dục 30 phút mỗi ngày.";
