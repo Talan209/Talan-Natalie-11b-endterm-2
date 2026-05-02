@@ -71,19 +71,19 @@
 
         if (bmi < 18.5) {
             category = "Gầy";
-            bodyImage.src = "images/Gaygo.png";
+            bodyImage.src = "images/gaygo.jpg";
 
             buttonHTML = `<button onclick="showAdvice('gain')">Xem cách tăng cân</button>`;
 
         } else if (bmi < 24.9) {
             category = "Bình thường";
-            bodyImage.src = "images/on.png";
+            bodyImage.src = "images/ondinh.webp";
 
             buttonHTML = `<button onclick="showAdvice('normal')"> Xem lời khuyên</button>`;
 
         } else {
             category = "Thừa cân / béo";
-            bodyImage.src = "images/map.webp";
+            bodyImage.src = "images/salad.jpg";
 
             buttonHTML = `<button onclick="showAdvice('lose')"> Xem cách giảm cân</button>`;
         }
